@@ -30,8 +30,27 @@
 <button onclick="summa()">
 Посчитать заказ
 </button>
-
 <script>
+async function sendToTelegram(text) {
+
+const token = "8868629774:AAHfC3znVKypNrPSQuekJp1ckYp51fxeELI";
+const chatId = "-5298579696";
+
+await fetch(
+`https://api.telegram.org/bot${token}/sendMessage`,
+{
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+chat_id: chatId,
+text: text
+})
+}
+);
+
+}
 function summa() {
 
 let total = 0;
@@ -59,13 +78,16 @@ alert("Выберите хотя бы одно блюдо");
 return;
 }
 
-alert(
+let message =
 "Новый заказ\n\n" +
 "Столик: " + table +
 "\n\n" +
 zakaz +
-"\nСумма: " + total + " ₸"
-);
+"\nСумма: " + total + " ₸";
+
+sendToTelegram(message);
+
+alert("Заказ отправлен!");
 
 }
 </script>
