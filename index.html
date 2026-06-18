@@ -123,14 +123,16 @@ alert("Выберите хотя бы одно блюдо");
 return;
 }
 
-let message =
 const now = new Date();
 
 const time =
-now.getHours().toString().padStart(2, '0')
-+ ':'
-+ now.getMinutes().toString().padStart(2, '0');
+now.getHours().toString().padStart(2, '0') +
+':' +
+now.getMinutes().toString().padStart(2, '0');
+
+let message =
 "Новый заказ\n\n" +
+"Время: " + time + "\n" +
 "Столик: " + table +
 "\n\n" +
 zakaz +
