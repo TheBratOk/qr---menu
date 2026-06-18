@@ -1,16 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>QR Menu</title>
-</head>
-<body>
-
 <h1>Кафе Вкусно</h1>
 
-<p>🍔 Бургер — 2500 ₸</p>
-<p>🍕 Пицца — 3500 ₸</p>
-<p>🥤 Кола — 700 ₸</p>
+<label>
+<input type="checkbox" id="burger">
+🍔 Бургер — 2500 ₸
+</label>
 
-</body>
-</html>
+<br><br>
+
+<label>
+<input type="checkbox" id="pizza">
+🍕 Пицца — 3500 ₸
+</label>
+
+<br><br>
+
+<label>
+<input type="checkbox" id="cola">
+🥤 Кола — 700 ₸
+</label>
+
+<br><br>
+
+<button onclick="summa()">
+Посчитать заказ
+</button>
+
+<script>
+function summa() {
+
+let total = 0;
+
+if(document.getElementById("burger").checked){
+total += 2500;
+}
+
+if(document.getElementById("pizza").checked){
+total += 3500;
+}
+
+if(document.getElementById("cola").checked){
+total += 700;
+}
+
+alert("Сумма заказа: " + total + " ₸");
+
+}
+</script>
