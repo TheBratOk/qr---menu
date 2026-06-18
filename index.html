@@ -92,6 +92,8 @@ text: text
 );
 
 }
+let orderNumber = localStorage.getItem("orderNumber") || 1;
+
 function summa() {
 
 let total = 0;
@@ -131,7 +133,7 @@ now.getHours().toString().padStart(2, '0') +
 now.getMinutes().toString().padStart(2, '0');
 
 let message =
-"🆕 Новый заказ\n\n" +
+"🆕 Заказ №" + orderNumber + "\n\n" +
 "⏰ Время: " + time +
 "\n🍽 Столик: " + table +
 "\n\n" +
@@ -140,6 +142,9 @@ zakaz +
 "\n\n🟡 Статус: Готовится";
 
 sendToTelegram(message);
+  
+orderNumber++;
+localStorage.setItem("orderNumber", orderNumber);
 
 alert("Заказ отправлен!");
 
