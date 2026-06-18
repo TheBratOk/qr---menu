@@ -84,6 +84,8 @@ button:hover{
 
 <button onclick="clearOrder()">🗑 Очистить</button>
 
+<button onclick="showStats()">📊 Статистика</button>
+
 <button onclick="orderReady()">✅ Заказ готов</button>
 
   <script>
@@ -97,6 +99,14 @@ document.getElementById("table").value = 1;
   sendToTelegram("🟢 Заказ готов!");
   alert("Сообщение отправлено");
     }
+function showStats() {
+  alert(
+    "📊 Статистика\n\n" +
+    "Заказов: " + totalOrders +
+    "\n\nВыручка: " + totalRevenue + " ₸"
+  );
+}
+  
 async function sendToTelegram(text) {
 
 const token = "8868629774:AAEcJ-7d5HtiF3lNOjeBTxxSVV6oxCNB7Tg";
@@ -118,6 +128,8 @@ text: text
 
 }
 let orderNumber = localStorage.getItem("orderNumber") || 1;
+let totalRevenue = Number(localStorage.getItem("totalRevenue")) || 0;
+let totalOrders = Number(localStorage.getItem("totalOrders")) || 0;
 
 function summa() {
 
@@ -167,6 +179,11 @@ zakaz +
 "\n\n🟡 Статус: Готовится";
 
 sendToTelegram(message);
+totalOrders++;
+totalRevenue += total;
+
+localStorage.setItem("totalOrders", totalOrders);
+localStorage.setItem("totalRevenue", totalRevenue);
   
 orderNumber++;
 localStorage.setItem("orderNumber", orderNumber);
