@@ -35,20 +35,37 @@
 function summa() {
 
 let total = 0;
+let zakaz = "";
 
 if(document.getElementById("burger").checked){
 total += 2500;
+zakaz += "🍔 Бургер\n";
 }
 
 if(document.getElementById("pizza").checked){
 total += 3500;
+zakaz += "🍕 Пицца\n";
 }
 
 if(document.getElementById("cola").checked){
 total += 700;
+zakaz += "🥤 Кола\n";
 }
 
-alert("Сумма заказа: " + total + " ₸");
+let table = document.getElementById("table").value;
+
+if(zakaz == ""){
+alert("Выберите хотя бы одно блюдо");
+return;
+}
+
+alert(
+"Новый заказ\n\n" +
+"Столик: " + table +
+"\n\n" +
+zakaz +
+"\nСумма: " + total + " ₸"
+);
 
 }
 </script>
